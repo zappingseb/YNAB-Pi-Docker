@@ -1,0 +1,4 @@
+[submodule "comdirect_api"]
+	path = comdirect_api
+	url = https://github.com/zappingseb/comdirect_api
+	branch = xx-paypal-csv
