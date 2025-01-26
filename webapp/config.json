@@ -1,0 +1,23 @@
+{
+  "api_secret": "${API_SECRET}",
+  "backends": [
+    {
+      "name": "Comdirect Schmusen YNAB",
+      "type": "comdirect",
+      "containerid": "backend",
+      "endpoint": "/api/${containerid}/import?type=${type}&what=${what}",
+      "actions": [
+        {
+          "name": "Start Comdirect",
+          "what": "start",
+          "color": "bg-blue-500 text-white"
+        },
+        {
+          "name": "Validated TAN",
+          "what": "validate_tan",
+          "color": "bg-green-500 text-white"
+        }
+      ]
+    }
+  ]
+}

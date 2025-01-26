@@ -1,0 +1,19 @@
+version: "3"
+services:
+  webapp:
+    build: ./webapp
+    ports:
+      - "80:80"
+    environment:
+      - BACKEND_URL=http://backend:5000
+    depends_on:
+      - backend
+    env_file:
+     - "C:/Users/sebas/Desktop/free/.env"
+
+  backend:
+    build: ./comdirect_api
+    ports:
+      - "5000:80"
+    volumes:
+      - "C:/Users/sebas/Desktop/free:/config"
