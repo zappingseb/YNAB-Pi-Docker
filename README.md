@@ -62,15 +62,21 @@ server string = Raspberry Pi
 security = user
 encrypt passwords = yes
 map to guest = never
+unix password sync = no
+guest account = nobody
+usershare allow guests = no
 
 [PiShare]
 path = /home/pi/share
+browseable = yes
 writeable = yes
 guest ok = no
+public = no
 create mask = 0660
 directory mask = 0750
-public = no
 valid users = pi
+force user = pi
+force group = pi
 EOL
 
 # Set Samba password for pi user
