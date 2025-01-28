@@ -9,11 +9,40 @@ services:
     depends_on:
       - backend
     env_file:
-     - "C:/Users/sebas/Desktop/free/.env"
+     - "${CONFIG_PATH}/.env"
 
   backend:
     build: ./comdirect_api
     ports:
       - "5000:80"
     volumes:
-      - "C:/Users/sebas/Desktop/free:/config"
+      - "${CONFIG_PATH}:/config"
+
+  comdirect_liv:
+    build: ./comdirect_api
+    ports:
+      - "5001:80"
+    volumes:
+      - "${CONFIG_PATH}/comdirectLiv:/config"
+  
+  kontist_sebastian:
+    build: ./kontistYNAB
+    ports:
+      - "5002:80"
+    volumes:
+      - "${CONFIG_PATH}/kontistSebastian/.env:/app/.env"
+  
+
+  kontist_liv:
+    build: ./kontistYNAB
+    ports:
+      - "5003:80"
+    volumes:
+      - "${CONFIG_PATH}/kontistLiv/.env:/app/.env"
+
+  comdirect_sebastian:
+    build: ./comdirect_api
+    ports:
+      - "5004:80"
+    volumes:
+      - "${CONFIG_PATH}/comdirectSebastian:/config"

@@ -2,7 +2,7 @@
   "api_secret": "${API_SECRET}",
   "backends": [
     {
-      "name": "Comdirect Schmusen YNAB",
+      "name": "Comdirect Schmusen YNAB - Sebastian's Photo TAN",
       "type": "comdirect",
       "containerid": "backend",
       "endpoint": "/api/${containerid}/import?type=${type}&what=${what}",
@@ -10,12 +10,98 @@
         {
           "name": "Start Comdirect",
           "what": "start",
-          "color": "bg-blue-500 text-white"
+          "color": "bg-zinc-500 text-white  hover:bg-zinc-600"
         },
         {
           "name": "Validated TAN",
           "what": "validate_tan",
-          "color": "bg-green-500 text-white"
+          "color": "bg-stone-500 text-white  hover:bg-stone-600"
+        }
+      ]
+    },
+    {
+      "name": "Kontist Sebastian to YNAB",
+      "type": "kontist",
+      "containerid": "kontist_sebastian",
+      "endpoint": "/api/${containerid}/sync",
+      "actions": [
+        {
+          "name": "Start Kontist Sync",
+          "what": "start",
+          "color": "bg-fuchsia-400 text-white  hover:bg-fuchsia-600"
+        }
+      ]
+    },
+    {
+      "name": "Kontist Liv to YNAB",
+      "type": "kontist",
+      "containerid": "kontist_liv",
+      "endpoint": "/api/${containerid}/sync",
+      "actions": [
+        {
+          "name": "Start Kontist Sync",
+          "what": "start",
+          "color": "bg-fuchsia-400 text-white hover:bg-fuchsia-600"
+        }
+      ]
+    },
+    {
+      "name": "Comdirect Liv YNAB",
+      "type": "comdirect",
+      "containerid": "comdirect_liv",
+      "endpoint": "/api/${containerid}/import?type=${type}&what=${what}",
+      "actions": [
+        {
+          "name": "Start Comdirect",
+          "what": "start",
+          "color": "bg-zinc-500 text-white  hover:bg-zinc-600"
+        },
+        {
+          "name": "Validated TAN",
+          "what": "validate_tan",
+          "color": "bg-stone-500 text-white  hover:bg-stone-600"
+        }
+      ]
+    },
+    {
+      "name": "PayPal CSV Upload",
+      "type": "paypal",
+      "containerid": "backend",
+      "endpoint": "/api/${containerid}/import?type=${type}",
+      "accepts_file": true,
+      "actions": [
+        {
+          "name": "Import PayPal CSV",
+          "what": "start",
+          "color": "bg-zinc-500 text-white  hover:bg-zinc-600"
+        }
+      ]
+    },
+    {
+      "name": "Hanseatic PDF Upload Sebastian",
+      "type": "hanseatic",
+      "containerid": "comdirect_sebastian",
+      "endpoint": "/api/${containerid}/import?type=${type}",
+      "accepts_file": true,
+      "actions": [
+        {
+          "name": "Import Hanseatic PDF",
+          "what": "start",
+          "color": "bg-zinc-500 text-white  hover:bg-zinc-600"
+        }
+      ]
+    },
+    {
+      "name": "GLS CSV Sebastian",
+      "type": "csv",
+      "containerid": "comdirect_sebastian",
+      "endpoint": "/api/${containerid}/import?type=${type}",
+      "accepts_file": true,
+      "actions": [
+        {
+          "name": "Import GLS CSV",
+          "what": "start",
+          "color": "bg-zinc-500 text-white  hover:bg-zinc-600"
         }
       ]
     }

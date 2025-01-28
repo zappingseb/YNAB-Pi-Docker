@@ -28,22 +28,18 @@ fi
 # Read the config.json (now with environment variables substituted) and extract the backends
 jq -r '.backends[] | "\(.containerid)"' /tmp/config_with_env.json | while read -r CONTAINER_ID; do
 
-    # Generate the location block to be added to the nginx.conf
-    LOCATION_BLOCK="
+    if ! grep -q "$CONTAINER_ID/" "$NGINX_CONF"; then
+       LOCATION_BLOCK="
 location /api/$CONTAINER_ID/ {
-    proxy_pass http://$CONTAINER_ID:80/;
-    proxy_set_header Host \$host;
-    proxy_set_header X-Real-IP \$remote_addr;
-    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-    proxy_set_header X-Forwarded-Proto \$scheme;
+   proxy_pass http://$CONTAINER_ID:80/;
+   proxy_set_header Host \$host;
+   proxy_set_header X-Real-IP \$remote_addr;
+   proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+   proxy_set_header X-Forwarded-Proto \$scheme;
 }
 "
-
-# Write the location block to a temporary file
-
-    echo "$LOCATION_BLOCK" > /tmp/location_block.txt
-    cat /tmp/location_block.txt
-    sed -i -e '$d' $NGINX_CONF
-    sed -i -e '$r /tmp/location_block.txt' $NGINX_CONF
-    echo "}" >> $NGINX_CONF
+       sed -i -e '$d' $NGINX_CONF
+       echo "$LOCATION_BLOCK" >> $NGINX_CONF
+       echo "}" >> $NGINX_CONF
+   fi
 done

@@ -2,3 +2,6 @@
 	path = comdirect_api
 	url = https://github.com/zappingseb/comdirect_api
 	branch = xx-paypal-csv
+[submodule "kontistYNAB"]
+	path = kontistYNAB
+	url = https://github.com/zappingseb/kontistYNAB.git
