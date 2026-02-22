@@ -150,7 +150,7 @@ export default {
           throw new Error(data.error || "Something went wrong");
         }
 
-        this.messages[identifier] = data.message;
+        this.messages[identifier] = data.message ?? (data.success === true ? 'Successfully synced' : null);
         this.responseData[identifier] = data;
       } catch (err) {
         this.messages[identifier] = err.message;

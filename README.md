@@ -1,4 +1,5 @@
 # YNAB-Pi-Docker
+
 A docker compose to serve my YNAB connectors
 
 # Setup
@@ -86,3 +87,7 @@ sudo smbpasswd -a pi
 sudo systemctl restart smbd
 sudo systemctl restart nmbd
 ```
+
+## TODO:
+
+- Liv Comdirect Schmusen einrichten
